@@ -26,14 +26,14 @@ func TestGetAPIKey(t *testing.T) {
 				"Authorization": []string{"ApiKey  123SensitiveString321"},
 			},
 			want:        "",
-			expectedErr: MalformedAuthHeader,
+			expectedErr: ErrMalformedAuthHeader,
 		},
 		"leading space prior to Apikey": {
 			input: http.Header{
 				"Authorization": []string{" ApiKey 123SensitiveString321"},
 			},
 			want:        "",
-			expectedErr: MalformedAuthHeader,
+			expectedErr: ErrMalformedAuthHeader,
 		},
 		"Header key is empty": {
 			input: http.Header{
@@ -82,7 +82,7 @@ func TestGetAPIKey(t *testing.T) {
 				"Authorization": []string{"ApiKey"},
 			},
 			want:        "",
-			expectedErr: MalformedAuthHeader,
+			expectedErr: ErrMalformedAuthHeader,
 		},
 	}
 
@@ -92,12 +92,12 @@ func TestGetAPIKey(t *testing.T) {
 			if err != nil {
 				diff := cmp.Diff(err, tc.expectedErr, cmpopts.EquateErrors())
 				if diff != "" {
-					t.Fatalf(diff)
+					t.Fatal(diff)
 				}
 			}
 			diff := cmp.Diff(tc.want, got)
 			if diff != "" {
-				t.Fatalf(diff)
+				t.Fatal(diff)
 			}
 		})
 	}
