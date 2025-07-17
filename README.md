@@ -26,4 +26,4 @@ Simon Harris's version of Boot.dev's Notely app.
 
 # Test Status
 ## Main Branch
-Ci ![Main branch test status](!https://github.com/simonbharris/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
+Ci ![Main branch test status](https://github.com/simonbharris/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
