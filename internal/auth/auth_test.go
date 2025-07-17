@@ -84,6 +84,13 @@ func TestGetAPIKey(t *testing.T) {
 			want:        "",
 			expectedErr: MalformedAuthHeader,
 		},
+		"Meta- validate that github action tests report a failure": {
+			input: http.Header{
+				"Authorization": []string{"ApiKey 123123123"},
+			},
+			want:        "",
+			expectedErr: MalformedAuthHeader,
+		},
 	}
 
 	for name, tc := range tests {
